@@ -1,1 +1,16 @@
+<div class="container">
+    <div class="header">
+        <h1>Trending Startups</h1>
+    </div>
+    <div class="content">
+        <ul>
+            {% for startup in startups %}
+                <li>
+                    <strong>{{ startup.name }}</strong><br>
+                    Growth Rate: {{ startup.growth_rate }}%
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
