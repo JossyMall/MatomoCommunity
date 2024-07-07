@@ -1,1 +1,25 @@
+<div class="container">
+    <div class="header">
+        <h1>Make an Offer</h1>
+    </div>
+    <div class="content">
+        <form method="post" action="{{ path('make_offer') }}">
+            <div>
+                <label for="toUserId">To User ID:</label>
+                <input type="text" id="toUserId" name="toUserId">
+            </div>
+            <div>
+                <label for="siteId">Site ID:</label>
+                <input type="text" id="siteId" name="siteId">
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <div>
+                <button type="submit">Send Offer</button>
+            </div>
+        </form>
+    </div>
+</div>
 
