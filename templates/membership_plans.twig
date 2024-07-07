@@ -1,16 +1,37 @@
-<div class="container">
-    <div class="header">
-        <h1>Membership Plans</h1>
-    </div>
-    <div class="content">
-        <ul>
-            {% for group in groups %}
-                <li>
-                    <strong>{{ group.group_name }}</strong><br>
-                    Features: {{ group.features|join(', ') }}
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+{% extends "admin.twig" %}
 
+{% block content %}
+<h2>Create Membership Group</h2>
+<form action="{{ url('MatomoCommunity.createMembershipGroup') }}" method="post">
+    <label for="name">Group Name:</label>
+    <input type="text" name="name" id="name" required>
+    <label for="features">Features (comma-separated):</label>
+    <input type="text" name="features" id="features" required>
+    <button type="submit">Create Group</button>
+</form>
+
+<h2>Set Default Membership Group</h2>
+<form action="{{ url('MatomoCommunity.setDefaultGroup') }}" method="post">
+    <label for="default_group">Default Group:</label>
+    <select name="default_group" id="default_group">
+        {% for group in groups %}
+        <option value="{{ group.id }}">{{ group.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Set Default Group</button>
+</form>
+
+<h2>Membership Groups</h2>
+{% for group in groups %}
+<p>
+    <strong>{{ group.name }}</strong><br>
+    Features: {{ group.features|join(', ') }}<br>
+    <form action="{{ url('MatomoCommunity.addUserToGroup') }}" method="post">
+        <label for="user_{{ group.id }}">Add User ID:</label>
+        <input type="number" name="user_id" id="user_{{ group.id }}" required>
+        <input type="hidden" name="group_id" value="{{ group.id }}">
+        <button type="submit">Add to Group</button>
+    </form>
+</p>
+{% endfor %}
+{% endblock %}
