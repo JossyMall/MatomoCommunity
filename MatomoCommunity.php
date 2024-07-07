@@ -10,7 +10,7 @@ class MatomoCommunity extends Plugin
     public function install()
     {
         $db = Db::get();
-        
+
         // Create matomo_membership_groups table
         $db->query("
             CREATE TABLE IF NOT EXISTS `matomo_membership_groups` (
@@ -20,7 +20,7 @@ class MatomoCommunity extends Plugin
                 PRIMARY KEY (`id`)
             )
         ");
-        
+
         // Alter matomo_user table to add group_id
         $db->query("ALTER TABLE `matomo_user` ADD COLUMN `group_id` INT(11) DEFAULT NULL");
 
@@ -100,4 +100,21 @@ class MatomoCommunity extends Plugin
         $db->query("ALTER TABLE `matomo_user` DROP COLUMN `group_id`");
 
         // Remove default membership group from matomo_option
-        $db->query("DELETE FROM `matomo_option` WHERE `
+        $db->query("DELETE FROM `matomo_option` WHERE `option_name` = 'default_membership_group'");
+
+        // Drop matomo_messages table
+        $db->query("DROP TABLE IF EXISTS `matomo_messages`");
+
+        // Drop matomo_value_worth table
+        $db->query("DROP TABLE IF EXISTS `matomo_value_worth`");
+
+        // Drop matomo_offers table
+        $db->query("DROP TABLE IF EXISTS `matomo_offers`");
+
+        // Drop matomo_watchlist table
+        $db->query("DROP TABLE IF EXISTS `matomo_watchlist`");
+
+        // Drop matomo_community_experiments table
+        $db->query("DROP TABLE IF EXISTS `matomo_community_experiments`");
+    }
+}
