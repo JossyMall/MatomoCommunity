@@ -5,13 +5,14 @@ namespace Piwik\Plugins\MatomoCommunity;
 use Piwik\Plugin;
 use Piwik\Db;
 use Piwik\Option;
+use Piwik\Config;
 
 class MatomoCommunity extends Plugin
 {
     public function install()
     {
         $db = Db::get();
-        $prefix = $db->getPrefix();
+        $prefix = Config::getInstance()->database['tables_prefix'];
 
         // Create membership_groups table
         $db->query("
@@ -94,7 +95,7 @@ class MatomoCommunity extends Plugin
     public function uninstall()
     {
         $db = Db::get();
-        $prefix = $db->getPrefix();
+        $prefix = Config::getInstance()->database['tables_prefix'];
 
         // Drop membership_groups table
         $db->query("DROP TABLE IF EXISTS `{$prefix}membership_groups`");
