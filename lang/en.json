@@ -1,1 +1,15 @@
+{
+    "MatomoCommunity": {
+        "DeviceOsTrigger": "Device/OS Trigger",
+        "CommunityMessaging": "Community Messaging",
+        "ValueWorth": "Value/Worth",
+        "BusinessPage": "Business Page",
+        "GrowthWorthGraph": "Growth/Worth Graph",
+        "MembershipFeature": "Membership Feature",
+        "TrendingStartups": "Trending Startups",
+        "MakeOffer": "Make an Offer",
+        "WatchStartups": "Watch Startups",
+        "CommunityExperiments": "Community Experiments"
+    }
+}
 
