@@ -1,1 +1,21 @@
+/* Add your custom CSS for the plugin here */
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.header {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.content {
+    padding: 20px;
+}
 
