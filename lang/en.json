@@ -1,25 +1,25 @@
 {
-    "MatomoCommunity": {
-        "DeviceOsTrigger": "Device/OS Trigger",
-        "CommunityMessaging": "Community Messaging",
-        "ValueWorth": "Value/Worth",
-        "BusinessPage": "Business Page",
-        "GrowthWorthGraph": "Growth/Worth Graph",
-        "MembershipFeature": "Membership Feature",
-        "TrendingStartups": "Trending Startups",
-        "MakeOffer": "Make an Offer",
-        "WatchStartups": "Watch Startups",
-        "CommunityExperiments": "Community Experiments"
-        "CreateMembershipGroup": "Create Membership Group",
-        "GroupName": "Group Name",
-        "Features": "Features",
-        "SetDefaultMembershipGroup": "Set Default Membership Group",
-        "DefaultGroup": "Default Group",
-        "MembershipGroups": "Membership Groups",
-        "AddUserID": "Add User ID",
-        "AddToGroup": "Add to Group"
-    }
+  "MatomoCommunity": {
+    "pluginDescription": "A community plugin for Matomo to add various features such as device/OS triggers, user messaging, value tracking, and more.",
+    "menuCommunity": "Community",
+    "menuOverview": "Overview",
+    "menuMessaging": "Messaging",
+    "menuValueWorth": "Value Worth",
+    "menuGrowthWorthGraph": "Growth Worth Graph",
+    "menuMembershipPlans": "Membership Plans",
+    "menuTrendingStartups": "Trending Startups",
+    "menuMakeOffer": "Make Offer",
+    "menuWatchlist": "Watchlist",
+    "menuCommunityExperiments": "Community Experiments",
+    "role": "Role",
+    "value": "Value",
+    "worth": "Worth",
+    "growth": "Growth",
+    "membershipGroup": "Membership Group",
+    "trending": "Trending",
+    "startups": "Startups",
+    "offer": "Offer",
+    "watchlist": "Watchlist",
+    "experiments": "Experiments"
+  }
 }
- 
- 
-
