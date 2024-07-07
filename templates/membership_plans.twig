@@ -1,1 +1,16 @@
+<div class="container">
+    <div class="header">
+        <h1>Membership Plans</h1>
+    </div>
+    <div class="content">
+        <ul>
+            {% for group in groups %}
+                <li>
+                    <strong>{{ group.group_name }}</strong><br>
+                    Features: {{ group.features|join(', ') }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
