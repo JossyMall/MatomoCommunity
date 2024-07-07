@@ -1,1 +1,44 @@
+<div class="container">
+    <div class="header">
+        <h1>Growth/Worth Graph</h1>
+    </div>
+    <div class="content">
+        <canvas id="growthGraph"></canvas>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('growthGraph').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ growthData.dates|raw }},
+                datasets: [{
+                    label: 'Value Growth',
+                    data: {{ growthData.values|raw }},
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+</script>
 
