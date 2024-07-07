@@ -2,8 +2,9 @@
 
 namespace Piwik\Plugins\MatomoCommunity;
 
-use Piwik\Plugins\Plugin;
+use Piwik\Plugin;
 use Piwik\Db;
+use Piwik\Option;
 
 class MatomoCommunity extends Plugin
 {
@@ -27,7 +28,7 @@ class MatomoCommunity extends Plugin
         // Insert default membership group
         $db->query("INSERT INTO `matomo_membership_groups` (`name`, `features`) VALUES ('Default', '[]')");
         $defaultGroupId = $db->lastInsertId();
-        $db->query("INSERT INTO `matomo_option` (`option_name`, `option_value`) VALUES ('default_membership_group', ?)", [$defaultGroupId]);
+        Option::set('default_membership_group', $defaultGroupId);
 
         // Create matomo_messages table
         $db->query("
@@ -100,7 +101,7 @@ class MatomoCommunity extends Plugin
         $db->query("ALTER TABLE `matomo_user` DROP COLUMN `group_id`");
 
         // Remove default membership group from matomo_option
-        $db->query("DELETE FROM `matomo_option` WHERE `option_name` = 'default_membership_group'");
+        Option::delete('default_membership_group');
 
         // Drop matomo_messages table
         $db->query("DROP TABLE IF EXISTS `matomo_messages`");
@@ -116,5 +117,23 @@ class MatomoCommunity extends Plugin
 
         // Drop matomo_community_experiments table
         $db->query("DROP TABLE IF EXISTS `matomo_community_experiments`");
+    }
+
+    public function registerEvents()
+    {
+        return array(
+            'AssetManager.getJavaScriptFiles' => 'getJsFiles',
+            'AssetManager.getStylesheetFiles' => 'getStylesheetFiles',
+        );
+    }
+
+    public function getJsFiles(&$jsFiles)
+    {
+        $jsFiles[] = 'plugins/MatomoCommunity/js/community.js';
+    }
+
+    public function getStylesheetFiles(&$stylesheetFiles)
+    {
+        $stylesheetFiles[] = 'plugins/MatomoCommunity/styles/community.css';
     }
 }
