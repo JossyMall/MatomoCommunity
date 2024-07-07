@@ -1,31 +1,79 @@
 {
-  "name": "MatomoCommunity",
-  "description": "A community plugin for Matomo to add various features such as device/OS triggers, user messaging, value tracking, and more.",
-  "version": "1.0.0",
-  "theme": false,
-  "authors": [
-    {
-      "name": "angelcee",
-      "email": "support@tabs101.com",
-      "homepage": "https://tabs101.com"
-    }
-  ],
-  "keywords": [
-    "matomo",
-    "community",
-    "device",
-    "os",
-    "trigger",
-    "messaging",
-    "value",
-    "worth",
-    "growth",
-    "membership",
-    "startups"
-  ],
-  "license": "GPL v3+",
-  "homepage": "https://tabs101.com",
-  "require": {
-    "matomo": ">=4.0.0"
-  }
+    "name": "MatomoCommunity",
+    "description": "A plugin to enhance community engagement within Matomo.",
+    "version": "1.0.0",
+    "license": "GPL-3.0+",
+    "author": "angelcee",
+    "homepage": "https://tabs101.com",
+    "require": {
+        "piwik": ">=4.0.0"
+    },
+    "features": [
+        {
+            "name": "Community Overview",
+            "description": "View community-related statistics and information.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/community-overview"
+        },
+        {
+            "name": "User Profile",
+            "description": "Manage user profiles.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/user-profile"
+        },
+        {
+            "name": "Messaging Inbox",
+            "description": "Manage messaging within the community.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/messaging-inbox"
+        },
+        {
+            "name": "Value Worth",
+            "description": "View the worth of community values.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/value-worth"
+        },
+        {
+            "name": "Growth Worth Graph",
+            "description": "Graphical representation of growth worth.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/growth-worth-graph"
+        },
+        {
+            "name": "Membership Plans",
+            "description": "Manage membership plans.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/membership-plans"
+        },
+        {
+            "name": "Trending Startups",
+            "description": "View trending startups within the community.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/trending-startups"
+        },
+        {
+            "name": "Make Offer",
+            "description": "Make offers to community members.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/make-offer"
+        },
+        {
+            "name": "Watchlist",
+            "description": "Manage your watchlist.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/watchlist"
+        },
+        {
+            "name": "Community Experiments",
+            "description": "Participate in community experiments.",
+            "category": "Community",
+            "docsUrl": "https://tabs101.com/docs/community-experiments"
+        }
+    ],
+    "settings": [],
+    "keywords": [
+        "community",
+        "engagement",
+        "membership"
+    ]
 }
