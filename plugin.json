@@ -1,19 +1,31 @@
 {
-    "name": "MatomoCommunity",
-    "version": "1.0.0",
-    "description": "A plugin to enhance Matomo with community features.",
-    "theme": false,
-    "authors": [
-        {
-            "name": "Your Name",
-            "email": "your.email@example.com",
-            "homepage": "https://example.com"
-        }
-    ],
-    "license": "GPL v3+",
-    "keywords": ["community", "plugin", "matomo"],
-    "homepage": "https://example.com",
-    "require": {
-        "matomo": ">=4.0.0"
+  "name": "MatomoCommunity",
+  "description": "A community plugin for Matomo to add various features such as device/OS triggers, user messaging, value tracking, and more.",
+  "version": "1.0.0",
+  "theme": false,
+  "authors": [
+    {
+      "name": "angelcee",
+      "email": "support@tabs101.com",
+      "homepage": "https://tabs101.com"
     }
+  ],
+  "keywords": [
+    "matomo",
+    "community",
+    "device",
+    "os",
+    "trigger",
+    "messaging",
+    "value",
+    "worth",
+    "growth",
+    "membership",
+    "startups"
+  ],
+  "license": "GPL v3+",
+  "homepage": "https://tabs101.com",
+  "require": {
+    "matomo": ">=4.0.0"
+  }
 }
