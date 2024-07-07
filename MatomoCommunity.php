@@ -11,10 +11,11 @@ class MatomoCommunity extends Plugin
     public function install()
     {
         $db = Db::get();
+        $prefix = $db->getPrefix();
 
-        // Create matomo_membership_groups table
+        // Create membership_groups table
         $db->query("
-            CREATE TABLE IF NOT EXISTS `matomo_membership_groups` (
+            CREATE TABLE IF NOT EXISTS `{$prefix}membership_groups` (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `name` VARCHAR(255) NOT NULL,
                 `features` TEXT NOT NULL,
@@ -22,17 +23,17 @@ class MatomoCommunity extends Plugin
             )
         ");
 
-        // Alter matomo_user table to add group_id
-        $db->query("ALTER TABLE `matomo_user` ADD COLUMN `group_id` INT(11) DEFAULT NULL");
+        // Alter user table to add group_id
+        $db->query("ALTER TABLE `{$prefix}user` ADD COLUMN `group_id` INT(11) DEFAULT NULL");
 
         // Insert default membership group
-        $db->query("INSERT INTO `matomo_membership_groups` (`name`, `features`) VALUES ('Default', '[]')");
+        $db->query("INSERT INTO `{$prefix}membership_groups` (`name`, `features`) VALUES ('Default', '[]')");
         $defaultGroupId = $db->lastInsertId();
         Option::set('default_membership_group', $defaultGroupId);
 
-        // Create matomo_messages table
+        // Create messages table
         $db->query("
-            CREATE TABLE IF NOT EXISTS `matomo_messages` (
+            CREATE TABLE IF NOT EXISTS `{$prefix}messages` (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `sender_id` INT(11) NOT NULL,
                 `receiver_id` INT(11) NOT NULL,
@@ -43,9 +44,9 @@ class MatomoCommunity extends Plugin
             )
         ");
 
-        // Create matomo_value_worth table
+        // Create value_worth table
         $db->query("
-            CREATE TABLE IF NOT EXISTS `matomo_value_worth` (
+            CREATE TABLE IF NOT EXISTS `{$prefix}value_worth` (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `site_id` INT(11) NOT NULL,
                 `value` DECIMAL(10, 2) NOT NULL,
@@ -54,9 +55,9 @@ class MatomoCommunity extends Plugin
             )
         ");
 
-        // Create matomo_offers table
+        // Create offers table
         $db->query("
-            CREATE TABLE IF NOT EXISTS `matomo_offers` (
+            CREATE TABLE IF NOT EXISTS `{$prefix}offers` (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `site_id` INT(11) NOT NULL,
                 `sender_id` INT(11) NOT NULL,
@@ -66,9 +67,9 @@ class MatomoCommunity extends Plugin
             )
         ");
 
-        // Create matomo_watchlist table
+        // Create watchlist table
         $db->query("
-            CREATE TABLE IF NOT EXISTS `matomo_watchlist` (
+            CREATE TABLE IF NOT EXISTS `{$prefix}watchlist` (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `user_id` INT(11) NOT NULL,
                 `site_id` INT(11) NOT NULL,
@@ -77,9 +78,9 @@ class MatomoCommunity extends Plugin
             )
         ");
 
-        // Create matomo_community_experiments table
+        // Create community_experiments table
         $db->query("
-            CREATE TABLE IF NOT EXISTS `matomo_community_experiments` (
+            CREATE TABLE IF NOT EXISTS `{$prefix}community_experiments` (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `experiment_id` INT(11) NOT NULL,
                 `user_id` INT(11) NOT NULL,
@@ -93,30 +94,31 @@ class MatomoCommunity extends Plugin
     public function uninstall()
     {
         $db = Db::get();
+        $prefix = $db->getPrefix();
 
-        // Drop matomo_membership_groups table
-        $db->query("DROP TABLE IF EXISTS `matomo_membership_groups`");
+        // Drop membership_groups table
+        $db->query("DROP TABLE IF EXISTS `{$prefix}membership_groups`");
 
-        // Remove group_id column from matomo_user table
-        $db->query("ALTER TABLE `matomo_user` DROP COLUMN `group_id`");
+        // Remove group_id column from user table
+        $db->query("ALTER TABLE `{$prefix}user` DROP COLUMN `group_id`");
 
-        // Remove default membership group from matomo_option
+        // Remove default membership group from option table
         Option::delete('default_membership_group');
 
-        // Drop matomo_messages table
-        $db->query("DROP TABLE IF EXISTS `matomo_messages`");
+        // Drop messages table
+        $db->query("DROP TABLE IF EXISTS `{$prefix}messages`");
 
-        // Drop matomo_value_worth table
-        $db->query("DROP TABLE IF EXISTS `matomo_value_worth`");
+        // Drop value_worth table
+        $db->query("DROP TABLE IF EXISTS `{$prefix}value_worth`");
 
-        // Drop matomo_offers table
-        $db->query("DROP TABLE IF EXISTS `matomo_offers`");
+        // Drop offers table
+        $db->query("DROP TABLE IF EXISTS `{$prefix}offers`");
 
-        // Drop matomo_watchlist table
-        $db->query("DROP TABLE IF EXISTS `matomo_watchlist`");
+        // Drop watchlist table
+        $db->query("DROP TABLE IF EXISTS `{$prefix}watchlist`");
 
-        // Drop matomo_community_experiments table
-        $db->query("DROP TABLE IF EXISTS `matomo_community_experiments`");
+        // Drop community_experiments table
+        $db->query("DROP TABLE IF EXISTS `{$prefix}community_experiments`");
     }
 
     public function registerEvents()
