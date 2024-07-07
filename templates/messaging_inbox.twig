@@ -1,1 +1,17 @@
+<div class="container">
+    <div class="header">
+        <h1>Inbox</h1>
+    </div>
+    <div class="content">
+        <ul>
+            {% for message in messages %}
+                <li>
+                    <strong>From:</strong> {{ message.from_user_id }}<br>
+                    <strong>Message:</strong> {{ message.message }}<br>
+                    <strong>Time:</strong> {{ message.timestamp }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
