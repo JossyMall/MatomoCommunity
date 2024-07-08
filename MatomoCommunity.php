@@ -124,10 +124,11 @@ class MatomoCommunity extends Plugin
 
     public function registerEvents()
     {
-        return array(
+        return [
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
             'AssetManager.getStylesheetFiles' => 'getStylesheetFiles',
-        );
+            'Template.controllerMetaAttributes' => 'addControllerMetaAttributes',
+        ];
     }
 
     public function getJsFiles(&$jsFiles)
@@ -138,5 +139,12 @@ class MatomoCommunity extends Plugin
     public function getStylesheetFiles(&$stylesheetFiles)
     {
         $stylesheetFiles[] = 'plugins/MatomoCommunity/styles/community.css';
+    }
+
+    public function addControllerMetaAttributes(&$attributes, $controller)
+    {
+        if ($controller instanceof CommunityController) {
+            $attributes['module'] = 'MatomoCommunity';
+        }
     }
 }
